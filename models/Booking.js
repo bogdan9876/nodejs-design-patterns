@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-
+    
     const Booking = sequelize.define("Booking", {
         number: {
             type: DataType.INTEGER,
@@ -13,11 +13,21 @@ module.exports = (sequelize, DataType) => {
             type: DataType.FLOAT,
             allowNull: false,
         },
-        isAvailable: {
-            type: DataType.BOOLEAN,
+        checkInDate: {
+            type: DataType.DATE,
+            allowNull: false,
+        },
+        checkOutDate: {
+            type: DataType.DATE,
             allowNull: false,
         },
     });
 
-    return Booking
-}
+    Booking.associate = (models) => {
+        Booking.belongsTo(models.Room);
+        Booking.belongsTo(models.User);
+        Booking.hasOne(models.Review);
+    };
+
+    return Booking;
+};

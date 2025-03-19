@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataType) => {
 
     const HotelChain = sequelize.define("HotelChain", {
-        username: {
+        name: {
             type: DataType.STRING,
             allowNull: false,
         },

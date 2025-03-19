@@ -11,6 +11,16 @@ module.exports = (sequelize, DataType) => {
         Hotel.hasOne(models.Location, {
             onDelete: "cascade"
         })
+
+        Hotel.hasMany(models.Room, {
+            onDelete: "cascade"
+        })
+
+        Hotel.hasMany(models.Review, {
+            onDelete: "cascade",
+        });
+
+        Hotel.belongsTo(models.HotelChain);
     }
 
     return Hotel
