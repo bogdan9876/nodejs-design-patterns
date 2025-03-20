@@ -18,9 +18,10 @@ module.exports = (sequelize, DataType) => {
     Location.associate = (models) => {
         Location.belongsTo(models.Hotel, {
             as: "Hotel",
-            onDelete: "cascade"
-        })
-    }
+            foreignKey: "HotelId",
+            onDelete: "CASCADE"
+        });
+    };
 
     return Location
 }

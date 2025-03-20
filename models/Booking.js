@@ -32,6 +32,7 @@ module.exports = (sequelize, DataType) => {
         });
         Booking.hasOne(models.Review, {
             as: "Review",
+            foreignKey: "BookingId",
         });
     };
 

@@ -19,6 +19,7 @@ module.exports = (sequelize, DataType) => {
     Review.associate = (models) => {
         Review.belongsTo(models.Booking, {
             as: "Booking",
+            foreignKey: "BookingId",
         });
         Review.belongsTo(models.Hotel, {
             as: "Hotel",

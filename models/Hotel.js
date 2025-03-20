@@ -1,5 +1,4 @@
 module.exports = (sequelize, DataType) => {
-
     const Hotel = sequelize.define("Hotel", {
         name: {
             type: DataType.STRING,
@@ -10,6 +9,7 @@ module.exports = (sequelize, DataType) => {
     Hotel.associate = (models) => {
         Hotel.hasOne(models.Location, {
             as: "Location",
+            foreignKey: "HotelId",
             onDelete: "CASCADE",
         });
 
