@@ -21,7 +21,7 @@ module.exports = (sequelize, DataType) => {
 
     Room.associate = (models) => {
         Room.hasMany(models.Booking, {
-            as: "Booking",
+            as: "Bookings",
         });
 
         Room.belongsTo(models.Hotel, {
