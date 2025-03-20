@@ -13,8 +13,13 @@ module.exports = (sequelize, DataType) => {
     });
 
     User.associate = (models) => {
-        User.hasMany(models.Booking);
-        User.hasMany(models.Review);
+        User.hasMany(models.Booking, {
+            as: "Bookings",
+        });
+
+        User.hasMany(models.Review, {
+            as: "Reviews",
+        });
     };
 
     return User;

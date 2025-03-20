@@ -20,8 +20,13 @@ module.exports = (sequelize, DataType) => {
     });
 
     Room.associate = (models) => {
-        Room.hasMany(models.Booking);
-        Room.belongsTo(models.Hotel)
+        Room.hasMany(models.Booking, {
+            as: "Booking",
+        });
+
+        Room.belongsTo(models.Hotel, {
+            as: "Hotel",
+        })
     };
 
     return Room

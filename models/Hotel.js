@@ -9,19 +9,24 @@ module.exports = (sequelize, DataType) => {
 
     Hotel.associate = (models) => {
         Hotel.hasOne(models.Location, {
-            onDelete: "cascade"
-        })
-
-        Hotel.hasMany(models.Room, {
-            onDelete: "cascade"
-        })
-
-        Hotel.hasMany(models.Review, {
-            onDelete: "cascade",
+            as: "Location",
+            onDelete: "CASCADE",
         });
 
-        Hotel.belongsTo(models.HotelChain);
-    }
+        Hotel.hasMany(models.Room, {
+            as: "Rooms",
+            onDelete: "CASCADE",
+        });
 
-    return Hotel
-}
+        Hotel.hasMany(models.Review, {
+            as: "Reviews",
+            onDelete: "CASCADE",
+        });
+
+        Hotel.belongsTo(models.HotelChain, {
+            as: "HotelChain",
+        });
+    };
+
+    return Hotel;
+};

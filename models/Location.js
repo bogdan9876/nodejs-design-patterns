@@ -17,6 +17,7 @@ module.exports = (sequelize, DataType) => {
 
     Location.associate = (models) => {
         Location.belongsTo(models.Hotel, {
+            as: "Hotel",
             onDelete: "cascade"
         })
     }

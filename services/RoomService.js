@@ -3,8 +3,8 @@ const RoomRepository = require('../repositories/RoomRepository.js');
 
 class RoomService extends BaseService {
     constructor() {
-        super(HotelRepository);
+        super(RoomRepository);
     }
 }
 
-module.exports = new RoomRepository;
+module.exports = new RoomService;

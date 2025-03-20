@@ -24,9 +24,15 @@ module.exports = (sequelize, DataType) => {
     });
 
     Booking.associate = (models) => {
-        Booking.belongsTo(models.Room);
-        Booking.belongsTo(models.User);
-        Booking.hasOne(models.Review);
+        Booking.belongsTo(models.Room, {
+            as: "Room",
+        });
+        Booking.belongsTo(models.User, {
+            as: "User",
+        });
+        Booking.hasOne(models.Review, {
+            as: "Review",
+        });
     };
 
     return Booking;

@@ -17,9 +17,15 @@ module.exports = (sequelize, DataType) => {
     });
 
     Review.associate = (models) => {
-        Review.belongsTo(models.Booking);
-        Review.belongsTo(models.Hotel);
-        Review.belongsTo(models.User);
+        Review.belongsTo(models.Booking, {
+            as: "Booking",
+        });
+        Review.belongsTo(models.Hotel, {
+            as: "Hotel",
+        });
+        Review.belongsTo(models.User, {
+            as: "User",
+        });
     };
 
     return Review

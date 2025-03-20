@@ -9,9 +9,10 @@ module.exports = (sequelize, DataType) => {
 
     HotelChain.associate = (models) => {
         HotelChain.hasMany(models.Hotel, {
-            onDelete: "cascade"
-        })
-    }
+            as: "Hotels",
+            onDelete: "CASCADE",
+        });
+    };
 
-    return HotelChain
-}
+    return HotelChain;
+};
