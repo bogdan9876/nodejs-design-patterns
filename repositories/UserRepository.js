@@ -1,9 +1,9 @@
-const BaseRepository = require('./BaseRepository.js');
+const IUserRepository = require('./interfaces/IUserRepository.js');
 const {User, Booking, Review} = require('../models');
 
-class UserRepository extends BaseRepository {
-    constructor() {
-        super(User);
+class UserRepository extends IUserRepository {
+    async create(data) {
+        return await User.create(data);
     }
 
     async getAll() {
@@ -23,6 +23,16 @@ class UserRepository extends BaseRepository {
             ]
         });
     }
+
+    async update(id, data) {
+        const user = await User.findByPk(id);
+        return await user.update(data);
+    }
+
+    async delete(id) {
+        const user = await User.findByPk(id);
+        return await user.destroy();
+    }
 }
 
-module.exports = new UserRepository;
+module.exports = UserRepository;

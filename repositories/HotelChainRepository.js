@@ -1,9 +1,9 @@
-const BaseRepository = require('./BaseRepository.js');
+const IHotelChainRepository = require('./interfaces/IHotelChainRepository.js');
 const { HotelChain, Hotel } = require('../models');
 
-class HotelChainRepository extends BaseRepository {
-    constructor() {
-        super(HotelChain);
+class HotelChainRepository extends IHotelChainRepository {
+    async create(data) {
+        return await HotelChain.create(data);
     }
 
     async getAll() {
@@ -16,6 +16,16 @@ class HotelChainRepository extends BaseRepository {
         return await HotelChain.findByPk(id, {
             include: [{ model: Hotel, as: "Hotels" }],
         });
+    }
+
+    async update(id, data) {
+        const hotelChain = await HotelChain.findByPk(id);
+        return await hotelChain.update(data);
+    }
+
+    async delete(id) {
+        const hotelChain = await HotelChain.findByPk(id);
+        return await hotelChain.destroy();
     }
 }
 

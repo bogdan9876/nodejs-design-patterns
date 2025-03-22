@@ -1,9 +1,9 @@
-const BaseRepository = require('./BaseRepository.js');
-const {Booking, Review} = require('../models');
+const IBookingRepository = require('./interfaces/IBookingRepository.js');
+const { Booking, Review } = require('../models');
 
-class BookingRepository extends BaseRepository {
-    constructor() {
-        super(Booking);
+class BookingRepository extends IBookingRepository {
+    async create(data) {
+        return await Booking.create(data);
     }
 
     async getAll() {
@@ -16,6 +16,15 @@ class BookingRepository extends BaseRepository {
         return await Booking.findByPk(id, {
             include: [{ model: Review, as: "Review" }]
         });
+    }
+    async update(id, data) {
+        const booking = await Booking.findByPk(id);
+        return await booking.update(data);
+    }
+
+    async delete(id) {
+        const booking = await Booking.findByPk(id);
+        return await booking.destroy();
     }
 }
 

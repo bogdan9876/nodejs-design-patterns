@@ -1,9 +1,27 @@
-const BaseRepository = require('./BaseRepository.js');
+const ILocationRepository = require('./interfaces/ILocationRepository.js');
 const {Location} = require('../models');
 
-class LocationRepository extends BaseRepository {
-    constructor() {
-        super(Location);
+class LocationRepository extends ILocationRepository {
+    async create(data) {
+        return await Location.create(data);
+    }
+
+    async getAll() {
+        return await Location.findAll();
+    }
+
+    async getById(id) {
+        return await Location.findByPk(id);
+    }
+
+    async update(id, data) {
+        const location = await Location.findByPk(id);
+        return await location.update(data);
+    }
+
+    async delete(id) {
+        const location = await Location.findByPk(id);
+        return await location.destroy();
     }
 }
 

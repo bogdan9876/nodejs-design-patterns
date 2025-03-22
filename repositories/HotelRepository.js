@@ -1,9 +1,9 @@
-const BaseRepository = require('./BaseRepository.js');
+const IHotelRepository = require('./interfaces/IHotelRepository.js');
 const { Hotel, Room, Review, Location } = require('../models');
 
-class HotelRepository extends BaseRepository {
-    constructor() {
-        super(Hotel);
+class HotelRepository extends IHotelRepository {
+    async create(data) {
+        return await Hotel.create(data);
     }
 
     async getAll() {
@@ -23,6 +23,16 @@ class HotelRepository extends BaseRepository {
                 { model: Room, as: "Rooms" },
                 { model: Review, as: "Reviews" }],
         });
+    }
+
+    async update(id, data) {
+        const hotel = await Hotel.findByPk(id);
+        return await hotel.update(data);
+    }
+
+    async delete(id) {
+        const hotel = await Hotel.findByPk(id);
+        return await hotel.destroy();
     }
 }
 
