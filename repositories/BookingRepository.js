@@ -28,4 +28,4 @@ class BookingRepository extends IBookingRepository {
     }
 }
 
-module.exports = new BookingRepository;
+module.exports = BookingRepository;

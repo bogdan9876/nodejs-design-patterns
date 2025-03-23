@@ -2,6 +2,7 @@ const IBookingService = require('./interfaces/IBookingService.js');
 
 class BookingService extends IBookingService {
     constructor(bookingRepository) {
+        super();
         this.bookingRepository = bookingRepository;
     }
 
