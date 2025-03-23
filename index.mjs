@@ -1,7 +1,7 @@
-require('reflect-metadata');
-const express = require('express');
-const router = require('./router.js');
-const db = require('./models');
+import "reflect-metadata";
+import express from 'express';
+import router from './router.js';
+import db from './models/index.js';
 
 const app = express()
 

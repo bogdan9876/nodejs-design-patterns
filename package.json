@@ -1,10 +1,10 @@
 {
   "name": "nodejs-patterns",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.mjs"
   },
   "author": "",
   "license": "ISC",
@@ -14,8 +14,10 @@
     "inversify": "^7.2.0",
     "mysql2": "^3.13.0",
     "nodemon": "^3.1.9",
-    "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.6",
     "sequelize-cli": "^6.6.2"
+  },
+  "devDependencies": {
+    "reflect-metadata": "^0.2.2"
   }
 }
