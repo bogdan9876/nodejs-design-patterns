@@ -1,6 +1,8 @@
+const { injectable } = require('inversify');
 const IReviewRepository = require('./interfaces/IReviewRepository.js');
 const {Review} = require('../models');
 
+@injectable()
 class ReviewRepository extends IReviewRepository {
     async create(data) {
         return await Review.create(data);

@@ -1,6 +1,8 @@
+@injectable()
 const IUserRepository = require('./interfaces/IUserRepository.js');
 const {User, Booking, Review} = require('../models');
 
+@injectable()
 class UserRepository extends IUserRepository {
     async create(data) {
         return await User.create(data);

@@ -1,6 +1,8 @@
+const { injectable } = require('inversify');
 const IRoomRepository = require('./interfaces/IRoomRepository.js');
 const { Room, Booking } = require('../models');
 
+@injectable()
 class RoomRepository extends IRoomRepository {
     async create(data) {
         return await Room.create(data);

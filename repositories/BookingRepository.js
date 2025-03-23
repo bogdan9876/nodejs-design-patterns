@@ -1,6 +1,8 @@
+const { injectable } = require('inversify');
 const IBookingRepository = require('./interfaces/IBookingRepository.js');
 const { Booking, Review } = require('../models');
 
+@injectable()
 class BookingRepository extends IBookingRepository {
     async create(data) {
         return await Booking.create(data);

@@ -1,6 +1,8 @@
+const { injectable } = require('inversify');
 const ILocationRepository = require('./interfaces/ILocationRepository.js');
 const {Location} = require('../models');
 
+@injectable()
 class LocationRepository extends ILocationRepository {
     async create(data) {
         return await Location.create(data);
