@@ -1,6 +1,6 @@
 class BookingController {
-    constructor(bookingRepository) {
-        this.bookingRepository = bookingRepository;
+    constructor(bookingService) {
+        this.bookingService = bookingService;
     }
 
     async create(req, res) {
