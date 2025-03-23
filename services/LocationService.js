@@ -1,29 +1,30 @@
 const ILocationService = require('./interfaces/ILocationService.js');
 
 class LocationService extends ILocationService {
-    constructor(locationService) {
-       this.locationService = locationService;
+    constructor(locationRepository) {
+        super();
+        this.locationRepository = locationRepository;
     }
 
     async create(data) {
-        return await this.locationService.create(data);
+        return await this.locationRepository.create(data);
     }
 
     async getAll() {
-        return await this.locationService.getAll();
+        return await this.locationRepository.getAll();
     }
 
     async getById(id) {
-        return await this.locationService.getById(id);
+        return await this.locationRepository.getById(id);
     }
 
     async update(id, data) {
-        return await this.locationService.update(id, data);
+        return await this.locationRepository.update(id, data);
     }
 
     async delete(id) {
-        return await this.locationService.delete(id);
+        return await this.locationRepository.delete(id);
     }
 }
 
-module.exports = LocationService;
+module.exports = new LocationService;

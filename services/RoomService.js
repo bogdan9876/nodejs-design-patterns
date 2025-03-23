@@ -1,29 +1,30 @@
 const IRoomService = require('./interfaces/IRoomService.js');
 
 class RoomService extends IRoomService {
-    constructor(roomService) {
-       this.roomService = roomService;
+    constructor(roomRepository) {
+        super();
+        this.roomRepository = roomRepository;
     }
 
     async create(data) {
-        return await this.roomService.create(data);
+        return await this.roomRepository.create(data);
     }
 
     async getAll() {
-        return await this.roomService.getAll();
+        return await this.roomRepository.getAll();
     }
 
     async getById(id) {
-        return await this.roomService.getById(id);
+        return await this.roomRepository.getById(id);
     }
 
     async update(id, data) {
-        return await this.roomService.update(id, data);
+        return await this.roomRepository.update(id, data);
     }
 
     async delete(id) {
-        return await this.roomService.delete(id);
+        return await this.roomRepository.delete(id);
     }
 }
 
-module.exports = RoomService;
+module.exports = new RoomService;

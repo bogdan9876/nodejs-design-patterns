@@ -27,4 +27,4 @@ class BookingService extends IBookingService {
     }
 }
 
-module.exports = BookingService;
+module.exports = new BookingService;

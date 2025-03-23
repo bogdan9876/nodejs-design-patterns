@@ -1,29 +1,30 @@
 const IReviewService = require('./interfaces/IReviewService.js');
 
 class ReviewService extends IReviewService {
-    constructor(reviewService) {
-       this.reviewService = reviewService;
+    constructor(reviewRepository) {
+        super();
+        this.reviewRepository = reviewRepository;
     }
 
     async create(data) {
-        return await this.reviewService.create(data);
+        return await this.reviewRepository.create(data);
     }
 
     async getAll() {
-        return await this.reviewService.getAll();
+        return await this.reviewRepository.getAll();
     }
 
     async getById(id) {
-        return await this.reviewService.getById(id);
+        return await this.reviewRepository.getById(id);
     }
 
     async update(id, data) {
-        return await this.reviewService.update(id, data);
+        return await this.reviewRepository.update(id, data);
     }
 
     async delete(id) {
-        return await this.reviewService.delete(id);
+        return await this.reviewRepository.delete(id);
     }
 }
 
-module.exports = ReviewService;
+module.exports = new ReviewService;

@@ -2,7 +2,8 @@ const IHotelService = require('./interfaces/IHotelService.js');
 
 class HotelService extends IHotelService {
     constructor(hotelRepository) {
-       this.hotelRepository = hotelRepository;
+        super();
+        this.hotelRepository = hotelRepository;
     }
 
     async create(data) {
@@ -26,4 +27,4 @@ class HotelService extends IHotelService {
     }
 }
 
-module.exports = HotelService;
+module.exports = new HotelService;

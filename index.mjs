@@ -1,4 +1,3 @@
-import "reflect-metadata";
 import express from 'express';
 import router from './router.js';
 import db from './models/index.js';
