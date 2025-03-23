@@ -1,8 +1,6 @@
-const { injectable } = require('inversify');
 const IHotelRepository = require('./interfaces/IHotelRepository.js');
 const { Hotel, Room, Review, Location } = require('../models');
 
-@injectable()
 class HotelRepository extends IHotelRepository {
     async create(data) {
         return await Hotel.create(data);
