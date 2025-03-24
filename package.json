@@ -12,7 +12,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "csv-writer": "^1.6.0",
     "express": "^4.21.2",
     "inversify": "^7.2.0",
     "mysql2": "^3.14.0",
