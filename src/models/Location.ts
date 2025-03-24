@@ -16,6 +16,6 @@ export class Location extends Model {
     @Column({ type: DataType.INTEGER })
     hotelId!: number;
 
-    @BelongsTo(() => Hotel)
+    @BelongsTo(() => Hotel, { onDelete: 'CASCADE' })
     hotel!: Hotel;
 }
