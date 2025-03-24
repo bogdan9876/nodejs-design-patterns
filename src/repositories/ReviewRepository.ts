@@ -1,8 +1,9 @@
+import { injectable } from "inversify";
 import { IReviewRepository } from './interfaces/IReviewRepository';
 import { Review } from '../models/Review';
 
-
-class ReviewRepository  implements IReviewRepository  {
+@injectable()
+class ReviewRepository implements IReviewRepository {
     async create(data: Partial<Review>) {
         return await Review.create(data);
     }
@@ -28,4 +29,4 @@ class ReviewRepository  implements IReviewRepository  {
     }
 }
 
-export default new ReviewRepository();
+export default ReviewRepository;

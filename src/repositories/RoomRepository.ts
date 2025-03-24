@@ -1,8 +1,9 @@
+import { injectable } from "inversify";
 import { IHotelChainRepository } from './interfaces/IHotelChainRepository';
 import { Room } from '../models/Room';
 import { Booking } from '../models/Booking';
 
-
+@injectable()
 class RoomRepository implements IHotelChainRepository {
     async create(data: Partial<Room>) {
         return await Room.create(data);
@@ -33,4 +34,4 @@ class RoomRepository implements IHotelChainRepository {
     }
 }
 
-export default new RoomRepository();
+export default RoomRepository;

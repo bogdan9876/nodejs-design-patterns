@@ -1,9 +1,10 @@
+import { injectable } from "inversify";
 import { IUserRepository } from './interfaces/IUserRepository';
 import { User } from '../models/User';
 import { Booking } from '../models/Booking';
 import { Review } from '../models/Review';
 
-
+@injectable()
 class UserRepository implements IUserRepository {
     async create(data: Partial<User>) {
         return await User.create(data);
@@ -28,16 +29,16 @@ class UserRepository implements IUserRepository {
     }
 
     async update(id: number, data: Partial<User>) {
-        const hotel = await User.findByPk(id);
-        if (!hotel) return null;
-        return await hotel.update(data);
+        const user = await User.findByPk(id);
+        if (!user) return null;
+        return await user.update(data);
     }
 
     async delete(id: number) {
-        const hotel = await User.findByPk(id);
-        if (!hotel) return;
-        await hotel.destroy();
+        const user = await User.findByPk(id);
+        if (!user) return;
+        await user.destroy();
     }
 }
 
-export default new UserRepository();
+export default UserRepository;

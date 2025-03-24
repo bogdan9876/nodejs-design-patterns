@@ -1,8 +1,9 @@
+import { injectable } from "inversify";
 import { ILocationRepository } from './interfaces/ILocationRepository';
 import { Location } from '../models/Location';
 
-
-class LocationRepository  implements ILocationRepository  {
+@injectable()
+class LocationRepository implements ILocationRepository {
     async create(data: Partial<Location>) {
         return await Location.create(data);
     }
@@ -28,4 +29,4 @@ class LocationRepository  implements ILocationRepository  {
     }
 }
 
-export default new LocationRepository();
+export default LocationRepository;
