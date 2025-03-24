@@ -1,27 +1,35 @@
-import { HotelChain } from '../models/HotelChain';
+import { inject, injectable } from "inversify";
 import { IHotelChainService } from './interfaces/IHotelChainService';
-import HotelChainRepository from '../repositories/HotelChainRepository';
+import { IHotelChainRepository } from '../repositories/interfaces/IHotelChainRepository';
+import { HotelChain } from '../models/HotelChain';
 
+@injectable()
 class HotelChainService implements IHotelChainService {
+    private hotelChainRepository: IHotelChainRepository;
+
+    constructor(@inject("IHotelChainRepository") hotelChainRepository: IHotelChainRepository) {
+        this.hotelChainRepository = hotelChainRepository;
+    }
+
     async create(data: Partial<HotelChain>) {
-        return await HotelChainRepository.create(data);
+        return await this.hotelChainRepository.create(data);
     }
 
     async getAll() {
-        return await HotelChainRepository.getAll();
+        return await this.hotelChainRepository.getAll();
     }
 
     async getById(id: number) {
-        return await HotelChainRepository.getById(id);
+        return await this.hotelChainRepository.getById(id);
     }
 
     async update(id: number, data: Partial<HotelChain>) {
-        return await HotelChainRepository.update(id, data);
+        return await this.hotelChainRepository.update(id, data);
     }
 
     async delete(id: number) {
-        return await HotelChainRepository.delete(id);
+        return await this.hotelChainRepository.delete(id);
     }
 }
 
-export default new HotelChainService();
+export default HotelChainService;

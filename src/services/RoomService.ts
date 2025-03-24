@@ -1,27 +1,35 @@
+import { inject, injectable } from "inversify";
 import { IRoomService } from "./interfaces/IRoomService";
-import RoomRepository from "../repositories/RoomRepository";
+import { IRoomRepository } from "../repositories/interfaces/IRoomRepository";
 import { Room } from "../models/Room";
 
+@injectable()
 class RoomService implements IRoomService {
+    private roomRepository: IRoomRepository;
+
+    constructor(@inject("IRoomRepository") roomRepository: IRoomRepository) {
+        this.roomRepository = roomRepository;
+    }
+
     async create(data: Partial<Room>) {
-        return await RoomRepository.create(data);
+        return await this.roomRepository.create(data);
     }
 
     async getAll() {
-        return await RoomRepository.getAll();
+        return await this.roomRepository.getAll();
     }
 
     async getById(id: number) {
-        return await RoomRepository.getById(id);
+        return await this.roomRepository.getById(id);
     }
 
     async update(id: number, data: Partial<Room>) {
-        return await RoomRepository.update(id, data);
+        return await this.roomRepository.update(id, data);
     }
 
     async delete(id: number) {
-        return await RoomRepository.delete(id);
+        return await this.roomRepository.delete(id);
     }
 }
 
-export default new RoomService();
+export default RoomService;

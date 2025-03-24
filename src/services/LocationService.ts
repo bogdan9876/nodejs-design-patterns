@@ -1,27 +1,35 @@
+import { inject, injectable } from "inversify";
 import { ILocationService } from "./interfaces/ILocationService";
-import LocationRepository from "../repositories/LocationRepository";
+import { ILocationRepository } from "../repositories/interfaces/ILocationRepository";
 import { Location } from "../models/Location";
 
+@injectable()
 class LocationService implements ILocationService {
+    private locationRepository: ILocationRepository;
+
+    constructor(@inject("ILocationRepository") locationRepository: ILocationRepository) {
+        this.locationRepository = locationRepository;
+    }
+
     async create(data: Partial<Location>) {
-        return await LocationRepository.create(data);
+        return await this.locationRepository.create(data);
     }
 
     async getAll() {
-        return await LocationRepository.getAll();
+        return await this.locationRepository.getAll();
     }
 
     async getById(id: number) {
-        return await LocationRepository.getById(id);
+        return await this.locationRepository.getById(id);
     }
 
     async update(id: number, data: Partial<Location>) {
-        return await LocationRepository.update(id, data);
+        return await this.locationRepository.update(id, data);
     }
 
     async delete(id: number) {
-        return await LocationRepository.delete(id);
+        return await this.locationRepository.delete(id);
     }
 }
 
-export default new LocationService();
+export default LocationService;

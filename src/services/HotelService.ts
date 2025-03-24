@@ -1,27 +1,35 @@
+import { inject, injectable } from "inversify";
 import { IHotelService } from "./interfaces/IHotelService";
-import HotelRepository from "../repositories/HotelRepository";
+import { IHotelRepository } from "../repositories/interfaces/IHotelRepository";
 import { Hotel } from "../models/Hotel";
 
+@injectable()
 class HotelService implements IHotelService {
+    private hotelRepository: IHotelRepository;
+
+    constructor(@inject("IHotelRepository") hotelRepository: IHotelRepository) {
+        this.hotelRepository = hotelRepository;
+    }
+
     async create(data: Partial<Hotel>) {
-        return await HotelRepository.create(data);
+        return await this.hotelRepository.create(data);
     }
 
     async getAll() {
-        return await HotelRepository.getAll();
+        return await this.hotelRepository.getAll();
     }
 
     async getById(id: number) {
-        return await HotelRepository.getById(id);
+        return await this.hotelRepository.getById(id);
     }
 
     async update(id: number, data: Partial<Hotel>) {
-        return await HotelRepository.update(id, data);
+        return await this.hotelRepository.update(id, data);
     }
 
     async delete(id: number) {
-        return await HotelRepository.delete(id);
+        return await this.hotelRepository.delete(id);
     }
 }
 
-export default new HotelService();
+export default HotelService;

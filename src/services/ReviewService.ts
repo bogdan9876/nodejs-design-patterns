@@ -1,27 +1,35 @@
+import { inject, injectable } from "inversify";
 import { IReviewService } from "./interfaces/IReviewService";
-import ReviewRepository from "../repositories/ReviewRepository";
+import { IReviewRepository } from "../repositories/interfaces/IReviewRepository";
 import { Review } from "../models/Review";
 
+@injectable()
 class ReviewService implements IReviewService {
+    private reviewRepository: IReviewRepository;
+
+    constructor(@inject("IReviewRepository") reviewRepository: IReviewRepository) {
+        this.reviewRepository = reviewRepository;
+    }
+
     async create(data: Partial<Review>) {
-        return await ReviewRepository.create(data);
+        return await this.reviewRepository.create(data);
     }
 
     async getAll() {
-        return await ReviewRepository.getAll();
+        return await this.reviewRepository.getAll();
     }
 
     async getById(id: number) {
-        return await ReviewRepository.getById(id);
+        return await this.reviewRepository.getById(id);
     }
 
     async update(id: number, data: Partial<Review>) {
-        return await ReviewRepository.update(id, data);
+        return await this.reviewRepository.update(id, data);
     }
 
     async delete(id: number) {
-        return await ReviewRepository.delete(id);
+        return await this.reviewRepository.delete(id);
     }
 }
 
-export default new ReviewService();
+export default ReviewService;
