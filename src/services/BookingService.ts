@@ -1,27 +1,35 @@
+import { inject, injectable } from "inversify";
 import { IBookingService } from "./interfaces/IBookingService";
-import BookingRepository from "../repositories/BookingRepository";
+import { IBookingRepository } from "../repositories/interfaces/IBookingRepository";
 import { Booking } from "../models/Booking";
 
+@injectable()
 class BookingService implements IBookingService {
+    private bookingRepository: IBookingRepository;
+
+    constructor(@inject("IBookingRepository") bookingRepository: IBookingRepository) {
+        this.bookingRepository = bookingRepository;
+    }
+
     async create(data: Partial<Booking>) {
-        return await BookingRepository.create(data);
+        return await this.bookingRepository.create(data);
     }
 
     async getAll() {
-        return await BookingRepository.getAll();
+        return await this.bookingRepository.getAll();
     }
 
     async getById(id: number) {
-        return await BookingRepository.getById(id);
+        return await this.bookingRepository.getById(id);
     }
 
     async update(id: number, data: Partial<Booking>) {
-        return await BookingRepository.update(id, data);
+        return await this.bookingRepository.update(id, data);
     }
 
     async delete(id: number) {
-        return await BookingRepository.delete(id);
+        return await this.bookingRepository.delete(id);
     }
 }
 
-export default new BookingService();
+export default BookingService;

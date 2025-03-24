@@ -1,8 +1,9 @@
-import { IBookingRepository } from './interfaces/IBookingRepository';
-import { Booking } from '../models/Booking';
-import { Review } from '../models/Review';
+import { injectable } from "inversify";
+import { IBookingRepository } from "./interfaces/IBookingRepository";
+import { Booking } from "../models/Booking";
+import { Review } from "../models/Review";
 
-
+@injectable()
 class BookingRepository implements IBookingRepository {
     async create(data: Partial<Booking>) {
         return await Booking.create(data);
@@ -33,4 +34,4 @@ class BookingRepository implements IBookingRepository {
     }
 }
 
-export default new BookingRepository();
+export default BookingRepository;
