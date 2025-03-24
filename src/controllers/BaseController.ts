@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 class BaseController<T> {
-    protected service: T;
+    private service: T;
 
     constructor(service: T) {
         this.service = service;

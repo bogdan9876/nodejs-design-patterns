@@ -11,4 +11,4 @@ container.bind<IBookingRepository>("IBookingRepository").to(BookingRepository);
 container.bind<IBookingService>("IBookingService").to(BookingService);
 container.bind<BookingController>("BookingController").to(BookingController);
 
-export { container, BookingController };
+export { container };
