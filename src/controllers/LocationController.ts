@@ -1,10 +1,12 @@
+import { inject, injectable } from "inversify";
+import { ILocationService } from "../services/interfaces/ILocationService";
 import BaseController from "./BaseController";
-import LocationService from "../services/LocationService";
 
-class LocationController extends BaseController<typeof LocationService> {
-    constructor() {
-        super(LocationService);
+@injectable()
+class LocationController extends BaseController<ILocationService> {
+    constructor(@inject("ILocationService") locationService: ILocationService) {
+        super(locationService);
     }
 }
 
-export default new LocationController();
+export default LocationController;

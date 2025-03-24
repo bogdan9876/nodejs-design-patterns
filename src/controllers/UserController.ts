@@ -1,10 +1,12 @@
+import { inject, injectable } from "inversify";
+import { IUserService } from "../services/interfaces/IUserService";
 import BaseController from "./BaseController";
-import UserService from "../services/UserService";
 
-class UserController extends BaseController<typeof UserService> {
-    constructor() {
-        super(UserService);
+@injectable()
+class UserController extends BaseController<IUserService> {
+    constructor(@inject("IUserService") userService: IUserService) {
+        super(userService);
     }
 }
 
-export default new UserController();
+export default UserController;

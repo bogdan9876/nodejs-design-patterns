@@ -1,10 +1,12 @@
+import { inject, injectable } from "inversify";
+import { IHotelService } from "../services/interfaces/IHotelService";
 import BaseController from "./BaseController";
-import HotelService from "../services/HotelService";
 
-class HotelController extends BaseController<typeof HotelService> {
-    constructor() {
-        super(HotelService);
+@injectable()
+class HotelController extends BaseController<IHotelService> {
+    constructor(@inject("IHotelService") hotelService: IHotelService) {
+        super(hotelService);
     }
 }
 
-export default new HotelController();
+export default HotelController;

@@ -1,9 +1,11 @@
+import { container } from "../config/inversify";
 import BaseRouter from './BaseRouter';
 import HotelChainController from '../controllers/HotelChainController';
 
 class HotelChainRouter extends BaseRouter {
     constructor() {
-        super(HotelChainController);
+        const hotelChainController = container.get<HotelChainController>("HotelChainController");
+        super(hotelChainController);
     }
 }
 

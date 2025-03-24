@@ -4,7 +4,7 @@ import BookingController from "../controllers/BookingController";
 
 class BookingRouter extends BaseRouter {
     constructor() {
-        const bookingController = container.get<BookingController>("BookingController");  // Ініціалізуємо контролер через контейнер
+        const bookingController = container.get<BookingController>("BookingController");
         super(bookingController);
     }
 }

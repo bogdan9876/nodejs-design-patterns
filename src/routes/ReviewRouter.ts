@@ -1,9 +1,11 @@
+import { container } from "../config/inversify";
 import BaseRouter from "./BaseRouter";
 import ReviewController from "../controllers/ReviewController";
 
 class ReviewRouter extends BaseRouter {
     constructor() {
-        super(ReviewController);
+        const reviewController = container.get<ReviewController>("ReviewController");
+        super(reviewController);
     }
 }
 

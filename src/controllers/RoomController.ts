@@ -1,10 +1,12 @@
+import { inject, injectable } from "inversify";
+import { IRoomService } from "../services/interfaces/IRoomService";
 import BaseController from "./BaseController";
-import RoomService from "../services/RoomService";
 
-class RoomController extends BaseController<typeof RoomService> {
-    constructor() {
-        super(RoomService);
+@injectable()
+class RoomController extends BaseController<IRoomService> {
+    constructor(@inject("IRoomService") roomService: IRoomService) {
+        super(roomService);
     }
 }
 
-export default new RoomController();
+export default RoomController;

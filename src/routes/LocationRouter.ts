@@ -1,9 +1,11 @@
+import { container } from "../config/inversify";
 import BaseRouter from "./BaseRouter";
 import LocationController from "../controllers/LocationController";
 
 class LocationRouter extends BaseRouter {
     constructor() {
-        super(LocationController);
+        const locationController = container.get<LocationController>("LocationController");
+        super(locationController);
     }
 }
 
