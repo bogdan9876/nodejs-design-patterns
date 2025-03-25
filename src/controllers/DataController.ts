@@ -1,15 +1,16 @@
 import { Request, Response } from "express";
-import DataService from '../services/DataService';
+import DataService from "../services/DataService";
 
 class DataController {
-    async get(req: Request, res: Response) {
+    async get(req: Request, res: Response): Promise<void> {
         try {
-            const result = await DataService.get();
-            res.status(200).json(result);
+            const result = await new DataService().get();
+            res.status(200).json({ message: "Succesfully data populate" });
         } catch (error) {
-            res.status(400).json({ message: error});
+            if (error instanceof Error)
+            res.status(400).json({ message: error.message });
         }
     }
 }
 
-export default DataController;
+export default new DataController();

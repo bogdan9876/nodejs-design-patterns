@@ -6,7 +6,6 @@ import HotelRouter from '../routes/HotelRouter';
 import LocationRouter from '../routes/LocationRouter';
 import ReviewRouter from '../routes/ReviewRouter';
 import RoomRouter from '../routes/RoomRouter';
-import DataRouter from '../routes/RoomRouter';
 
 const router = Router();
 
@@ -17,6 +16,5 @@ router.use('/hotel', HotelRouter);
 router.use('/location', LocationRouter);
 router.use('/review', ReviewRouter);
 router.use('/room', RoomRouter);
-router.use('/data', DataRouter);
 
 export default router;
