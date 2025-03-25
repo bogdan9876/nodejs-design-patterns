@@ -6,13 +6,15 @@
     "start": "nodemon ./src/index.ts",
     "build": "tsc -p .",
     "extra": "node ./build/index.js",
-    "generate": "npx ts-node src/generateData"
+    "generate": "npx ts-node src/generateData",
+    "import": "npx ts-node src/importData"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "csv-parser": "^3.2.0",
     "express": "^4.21.2",
     "inversify": "^7.2.0",
     "mysql2": "^3.14.0",
