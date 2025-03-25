@@ -17,7 +17,7 @@ class DataRepository {
     async get(): Promise<void> {
         try {
             if (!fs.existsSync(this.filePath)) {
-                throw new Error(`File data.csv doesn't exist please create it`);
+                throw new Error(`File data.csv doesn't exist, please, create it`);
             }
             await importCSV();
         } catch (error) {
