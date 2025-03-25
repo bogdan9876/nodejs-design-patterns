@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon ./src/index.ts",
     "build": "tsc -p .",
-    "extra": "node ./build/index.js"
+    "extra": "node ./build/index.js",
+    "generate": "npx ts-node src/generateData"
   },
   "keywords": [],
   "author": "",
