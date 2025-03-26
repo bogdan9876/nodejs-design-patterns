@@ -5,12 +5,12 @@ import DataRouter from './routes/DataRouter';
 
 const app = express();
 app.use(express.json());
-app.use('/api', router)
+app.use('/api', router);
 app.use('/data', DataRouter);
 
 const startApp = async () => {
     try {
-        await sequelize.sync();
+        await (await sequelize).sync();
         app.listen(5000, () => {
             console.log("Server running on port 5000");
         });

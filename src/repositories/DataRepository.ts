@@ -34,7 +34,7 @@ async function importCSV(): Promise<void> {
             .pipe(csvParser())
             .on('data', (row) => results.push(row))
             .on('end', async () => {                
-                const transaction = await sequelize.transaction();
+                const transaction = await (await sequelize).transaction();
                 try {
                     for (const row of results) {
                         let hotelChain = await HotelChain.findOne({ where: { id: row.hotelChainId }, transaction });
