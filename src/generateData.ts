@@ -17,7 +17,7 @@ function generateCSV(filePath: string) {
     const hotelChains = ['Hilton', 'Marriott', 'Hyatt', 'Sheraton', 'InterContinental'];
 
     for (const chain of hotelChains) {
-        const hotelsInChain = Math.floor(Math.random() * 5) + 1;
+        const hotelsInChain = Math.floor(Math.random() * 15) + 1;
 
         for (let h = 0; h < hotelsInChain; h++) {
             const hotelName = `${chain} Hotel ${hotelId}`;
@@ -25,7 +25,7 @@ function generateCSV(filePath: string) {
             const hotelCity = `City_${hotelId}`;
             const hotelCountry = `Country_${hotelId}`;
 
-            const roomsInHotel = Math.floor(Math.random() * 10) + 5;
+            const roomsInHotel = Math.floor(Math.random() * 20) + 5;
 
             for (let r = 0; r < roomsInHotel; r++) {
                 const roomNumber = 100 + roomId;
