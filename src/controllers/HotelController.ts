@@ -9,6 +9,23 @@ class HotelController extends BaseController<IHotelService> {
         super(hotelService);
     }
 
+    async showAddHotelPage(req: Request, res: Response): Promise<void> {
+        try {
+            res.render('add_hotel');
+        } catch (error) {
+            res.status(500).json({ message: (error as Error).message });
+        }
+    }
+
+    async create(req: Request, res: Response): Promise<void> {
+        try {
+            const newHotel = await this.service.create(req.body);
+            res.redirect("/api/hotel");
+        } catch (error) {
+            res.status(500).json({ message: (error as Error).message });
+        }
+    }
+
     async getAll(req: Request, res: Response): Promise<void> {
         await this.handleRequest(req, res, async () => {
             try {
