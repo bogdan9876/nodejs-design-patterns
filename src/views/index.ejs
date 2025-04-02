@@ -3,12 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hotel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hotel</title>
 </head>
 <body>
     <div class="container">
-        <h1 class="header">Guitar Inventory</h1>
+        <h1>Hotel Manager</h1>
+        <ul>
+            <% hotels.forEach(hotel => { %>
+                <li> Hotel name = <%= hotel.name %>; HotelChainId = <%= hotel.hotelChainId %></li>
+            <% }) %>
+        </ul>
     </div>
 </body>
 </html>
