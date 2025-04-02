@@ -28,7 +28,9 @@ class BaseController<T> {
             const result = await action();
             res.json(result);
         } catch (error) {
-            res.status(500).json({ message: (error as Error).message });
+            if (!res.headersSent) {
+                res.status(500).json({ message: (error as Error).message });
+            }
         }
     }
 
