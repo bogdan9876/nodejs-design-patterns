@@ -16,7 +16,7 @@ export class Room extends Model {
     @Column({ type: DataType.BOOLEAN, allowNull: false })
     isAvailable!: boolean;
 
-    @HasMany(() => Booking)
+    @HasMany(() => Booking, { onDelete: 'CASCADE' })
     bookings!: Booking[];
 
     @ForeignKey(() => Hotel)
