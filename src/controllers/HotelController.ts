@@ -45,7 +45,7 @@ class HotelController extends BaseController<IHotelService> {
 
     async create(req: Request, res: Response): Promise<void> {
         try {
-            const newHotel = await this.service.create(req.body);
+            await this.service.create(req.body);
             res.redirect("/api/hotel");
         } catch (error) {
             res.status(500).json({ message: (error as Error).message });
@@ -63,7 +63,7 @@ class HotelController extends BaseController<IHotelService> {
 
     async delete(req: Request, res: Response): Promise<void> {
         try {
-            const updateHotel = await this.service.delete(req.params.id);
+            await this.service.delete(req.params.id);
             res.redirect("/api/hotel");
         } catch (error) {
             res.status(500).json({ message: (error as Error).message });
