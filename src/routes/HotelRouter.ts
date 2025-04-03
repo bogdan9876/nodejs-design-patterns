@@ -11,6 +11,7 @@ class HotelRouter extends BaseRouter {
     registerRoutes(): void {
         this.router.get("/add", this.controller.showAddHotelPage.bind(this.controller));
         this.router.get("/edit/:id", this.controller.editHotelPage.bind(this.controller));
+        this.router.get("/delete/:id", this.controller.deleteHotelPage.bind(this.controller));
         this.router.post("/", this.controller.create.bind(this.controller));
         this.router.get("/", this.controller.getAll.bind(this.controller));
         this.router.get("/:id", this.controller.getOne.bind(this.controller));

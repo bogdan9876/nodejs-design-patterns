@@ -23,6 +23,7 @@
                     <th>Hotel Name</th>
                     <th>Hotel Chain ID</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +34,11 @@
                         <td>
                             <a href="/api/hotel/edit/<%= hotel.id %>" class="edit-icon">
                                 <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                        <td style="display: flex; justify-content: center;">
+                            <a href="/api/hotel/delete/<%= hotel.id %>" class="edit-icon">
+                                <i class="fas fa-trash"></i>
                             </a>
                         </td>
                     </tr>
