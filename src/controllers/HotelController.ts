@@ -39,6 +39,15 @@ class HotelController extends BaseController<IHotelService> {
         }
     }
 
+    async update(req: Request, res: Response): Promise<void> {
+        try {
+            const updateHotel = await this.service.update(req.params.id, req.body);
+            res.redirect("/api/hotel");
+        } catch (error) {
+            res.status(500).json({ message: (error as Error).message });
+        }
+    }
+
     async getAll(req: Request, res: Response): Promise<void> {
         await this.handleRequest(req, res, async () => {
             try {

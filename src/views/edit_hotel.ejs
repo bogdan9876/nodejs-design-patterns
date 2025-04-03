@@ -14,7 +14,7 @@
         <h1>Edit Hotel</h1>
     </header>
     <main class="container my-5">
-        <form action="/api/hotel/<%= hotel.id %>?_method=PUT" method="POST" class="edit-hotel-form">
+        <form action="/api/hotel/<%= hotel.id %>" method="POST" class="edit-hotel-form">
             <input type="hidden" name="_method" value="PUT">
 
             <label for="name" class="form-label">Hotel Name:</label>
