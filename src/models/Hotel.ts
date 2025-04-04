@@ -9,13 +9,13 @@ export class Hotel extends Model {
     @Column({ type: DataType.STRING, allowNull: false })
     name!: string;
 
-    @HasOne(() => Location, { onDelete: 'CASCADE' })
+    @HasOne(() => Location)
     location!: Location;
 
-    @HasMany(() => Room, { onDelete: 'CASCADE' })
+    @HasMany(() => Room)
     rooms!: Room[];
 
-    @HasMany(() => Review, { onDelete: 'CASCADE' })
+    @HasMany(() => Review)
     reviews!: Review[];
 
     @ForeignKey(() => HotelChain)

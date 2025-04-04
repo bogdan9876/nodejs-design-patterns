@@ -6,6 +6,6 @@ export class HotelChain extends Model {
     @Column({ allowNull: false })
     name!: string;
 
-    @HasMany(() => Hotel, { onDelete: 'CASCADE' })
+    @HasMany(() => Hotel)
     hotels!: Hotel[];
 }

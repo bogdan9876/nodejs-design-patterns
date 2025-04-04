@@ -20,7 +20,7 @@ export class Booking extends Model {
     @Column({ type: DataType.DATE, allowNull: false })
     checkOutDate!: Date;
 
-    @HasOne(() => Review, { onDelete: 'CASCADE' })
+    @HasOne(() => Review)
     review!: Review;
     
     @ForeignKey(() => Room)
