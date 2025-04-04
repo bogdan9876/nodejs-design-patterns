@@ -50,17 +50,22 @@ class HotelController extends BaseController<IHotelService> {
         } catch (error) {
             const errorMessage = (error as Error).message;
             if (errorMessage.includes("foreign key constraint fails")) {
-                res.status(400).render('add_hotel', { error: "Invalid Hotel Chain ID"});
+                res.status(400).render('add_hotel', { error: "Invalid Hotel Chain ID" });
             }
         }
     }
 
     async update(req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+        const hotelData = { ...req.body, id };
         try {
             await this.service.update(req.params.id, req.body);
             res.redirect("/api/hotel");
         } catch (error) {
-            res.status(500).json({ message: (error as Error).message });
+            const errorMessage = (error as Error).message;
+            if (errorMessage.includes("foreign key constraint fails")) {
+                res.status(400).render('edit_hotel', { error: "Invalid Hotel Chain ID",  hotel: hotelData });
+            }
         }
     }
 
