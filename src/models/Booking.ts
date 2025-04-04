@@ -20,6 +20,9 @@ export class Booking extends Model {
     @Column({ type: DataType.DATE, allowNull: false })
     checkOutDate!: Date;
 
+    @HasOne(() => Review, { onDelete: 'CASCADE' })
+    review!: Review;
+    
     @ForeignKey(() => Room)
     @Column({ type: DataType.INTEGER })
     roomId!: number;
@@ -33,7 +36,4 @@ export class Booking extends Model {
 
     @BelongsTo(() => User)
     user!: User;
-
-    @HasOne(() => Review)
-    review!: Review;
 }

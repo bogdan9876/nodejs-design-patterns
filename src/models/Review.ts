@@ -18,7 +18,7 @@ export class Review extends Model {
     @Column({ type: DataType.INTEGER })
     bookingId!: number;
 
-    @BelongsTo(() => Booking, { onDelete: 'CASCADE' })
+    @BelongsTo(() => Booking)
     booking!: Booking;
 
     @ForeignKey(() => Hotel)
