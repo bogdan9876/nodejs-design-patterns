@@ -10,7 +10,7 @@ export class User extends Model {
     @Column({ type: DataType.STRING, allowNull: false, unique: true })
     email!: string;
 
-    @HasMany(() => Booking)
+    @HasMany(() => Booking, { onDelete: 'CASCADE' })
     bookings!: Booking[];
 
     @HasMany(() => Review)

@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
+import * as models from './models';
 import mysql from 'mysql2/promise';
 import path from 'path';
 
@@ -33,7 +34,7 @@ const initializeSequelize = async () => {
         host: DB_HOST,
         username: DB_USER,
         password: DB_PASSWORD,
-        models: [path.resolve(__dirname, '../models')],
+        models: Object.values(models),
     });
 
     try {
