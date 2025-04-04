@@ -20,6 +20,12 @@
             <label for="hotelChainId" class="form-label">Hotel Chain ID:</label>
             <input type="number" id="hotelChainId" name="hotelChainId" required class="form-input">
 
+            <% if (typeof error !=='undefined' ) { %>
+                <div style="color: red;" class="form-label">
+                    <%= error %>
+                </div>
+                <% } %>
+
             <button type="submit" class="add-button">Add Hotel</button>
         </form>
     </main>
