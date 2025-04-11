@@ -134,29 +134,97 @@
  * /api/hotel:
  *   get:
  *     tags: [Hotel]
- *     summary: Get a list of all hotels
- *     description: Retrieves a list of all hotels currently available in the system.
+ *     summary: Get a list of all hotels (HTML response)
+ *     description: Returns an HTML page via EJS.
  *     responses:
  *       200:
- *         description: List of hotels
+ *         description: HTML content
+ *         content:
+ *           text/html:
+ *             schema:
+ *               type: string
+ *               example: "<!DOCTYPE html></html>"
+ */
+
+/**
+ * @swagger
+ * /api/hotel/{id}:
+ *   put:
+ *     tags: [Hotel]
+ *     summary: Update a hotel by ID
+ *     description: Updates the name or hotelChainId of an existing hotel.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: The numeric ID of the hotel to update.
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Updated name of the hotel.
+ *                 example: Updated Graham Hotel
+ *               hotelChainId:
+ *                 type: integer
+ *                 description: Updated hotel chain ID.
+ *                 example: 3
+ *     responses:
+ *       200:
+ *         description: Hotel successfully updated
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 data:
- *                   type: array
- *                   description: Array of hotel objects.
- *                   items:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: integer
- *                         example: 12
- *                       name:
- *                         type: string
- *                         example: Ocean View Resort
- *                       hotelChainId:
- *                         type: string
- *                         example: "3"
+ *                 id:
+ *                   type: integer
+ *                   example: 25
+ *                 name:
+ *                   type: string
+ *                   example: Updated Graham Hotel
+ *                 hotelChainId:
+ *                   type: integer
+ *                   example: 3
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *                   example: "2025-04-04T15:17:47.000Z"
+ *                 updatedAt:
+ *                   type: string
+ *                   format: date-time
+ *                   example: "2025-04-05T10:32:12.000Z"
+ */
+
+/**
+ * @swagger
+ * /api/hotel/{id}:
+ *   delete:
+ *     tags: [Hotel]
+ *     summary: Delete a hotel by ID
+ *     description: Permanently removes a hotel from the system using its ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: The numeric ID of the hotel to delete.
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Hotel successfully deleted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Hotel with ID 25 has been deleted.
  */
