@@ -1,0 +1,9 @@
+/**
+    * @swagger
+    * /user:
+    *   get:
+    *     summary: Retrieve a list of users
+    *     responses:
+    *       200:
+    *         description: A list of users
+*/

@@ -1,5 +1,6 @@
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
+import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerOptions from './config/swagger'
 import sequelize from './config/sequelize';
 import router from './config/router';
@@ -8,6 +9,7 @@ import DataRouter from './routes/DataRouter';
 import path from 'path';
 
 const app = express();
+const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride((req: any) => {
@@ -23,7 +25,7 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use('/api', router);
 app.use('/data', DataRouter);
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerOptions, { explorer: true }));
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocs, { explorer: true }));
 
 const startApp = async () => {
     try {
