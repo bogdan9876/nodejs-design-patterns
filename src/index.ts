@@ -1,4 +1,6 @@
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
+import swaggerOptions from './config/swagger'
 import sequelize from './config/sequelize';
 import router from './config/router';
 import methodOverride from 'method-override';
@@ -21,6 +23,7 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use('/api', router);
 app.use('/data', DataRouter);
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerOptions, { explorer: true }));
 
 const startApp = async () => {
     try {

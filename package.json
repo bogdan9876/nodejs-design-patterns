@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.ts",
+    "start": "kill-port 5000 && nodemon ./src/index.ts",
     "build": "tsc -p .",
     "extra": "node ./build/index.js",
     "generate": "npx ts-node src/generateData",
@@ -24,6 +24,7 @@
     "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.6",
     "sequelize-typescript": "^2.1.6",
+    "swagger-ui-express": "^5.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   },
@@ -33,6 +34,8 @@
     "@types/inversify": "^2.0.33",
     "@types/method-override": "^3.0.0",
     "@types/node": "^22.13.12",
-    "@types/validator": "^13.12.2"
+    "@types/swagger-ui-express": "^4.1.8",
+    "@types/validator": "^13.12.2",
+    "kill-port": "^2.0.1"
   }
 }

@@ -1,7 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import * as models from './models';
 import mysql from 'mysql2/promise';
-import path from 'path';
 
 const DB_NAME = 'patterns_db';
 const DB_USER = 'root';
@@ -35,6 +34,7 @@ const initializeSequelize = async () => {
         username: DB_USER,
         password: DB_PASSWORD,
         models: Object.values(models),
+        logging: false
     });
 
     try {
