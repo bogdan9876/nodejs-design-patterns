@@ -25,7 +25,7 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use('/api', router);
 app.use('/data', DataRouter);
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocs, { explorer: true }));
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 const startApp = async () => {
     try {
