@@ -8,9 +8,10 @@
 /**
  * @swagger
  * /api/hotel:
- *    post:
+ *   post:
  *     tags: [Hotel]
- *     summary: Create a hotel.
+ *     summary: Create a new hotel
+ *     description: Adds a new hotel to the system with a name and associated hotel chain ID.
  *     requestBody:
  *       required: true
  *       content:
@@ -20,32 +21,32 @@
  *             properties:
  *               name:
  *                 type: string
- *                 description: The hotel's name.
- *                 example: Leanne Graham
+ *                 description: The name of the hotel.
+ *                 example: Leanne Graham Hotel
  *               hotelChainId:
  *                 type: string
- *                 description: The hotel chain ID.
+ *                 description: The ID of the hotel chain this hotel belongs to.
  *                 example: 1
  *     responses:
  *       200:
- *         description: Created
+ *         description: Hotel successfully created
  *         content:
  *           application/json:
  *             schema:
- *              type: object
- *              properties:
- *               id:
- *                 type: integer
- *                 description: The user ID.
- *                 example: 52
- *               name:
- *                 type: string
- *                 description: The hotel's name.
- *                 example: Leanne Graham
- *               hotelChainId:
- *                 type: string
- *                 description: The hotel chain ID.
- *                 example: 1
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   description: Unique identifier of the hotel.
+ *                   example: 52
+ *                 name:
+ *                   type: string
+ *                   description: The name of the hotel.
+ *                   example: Leanne Graham Hotel
+ *                 hotelChainId:
+ *                   type: integer
+ *                   description: The ID of the associated hotel chain.
+ *                   example: 1
  */
 
 
@@ -54,46 +55,90 @@
  * /api/hotel/{id}:
  *   get:
  *     tags: [Hotel]
- *     summary: Retrieve a single JSONPlaceholder user.
- *     description: Retrieve a single JSONPlaceholder user. Can be used to populate a user profile when prototyping or testing an API.
+ *     summary: Get hotel details by ID
+ *     description: Retrieves detailed information about a hotel by its ID.
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: Numeric ID of the user to retrieve.
+ *         description: The numeric ID of the hotel to retrieve.
  *         schema:
  *           type: integer
  *     responses:
  *       200:
- *         description: A single user.
+ *         description: Detailed hotel information
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 data:
+ *                 id:
+ *                   type: integer
+ *                   description: Unique identifier of the hotel.
+ *                   example: 25
+ *                 name:
+ *                   type: string
+ *                   description: Name of the hotel.
+ *                   example: Leanne Graham Hotel
+ *                 hotelChainId:
+ *                   type: integer
+ *                   description: ID of the hotel chain.
+ *                   example: 2
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *                   description: Timestamp when the hotel was created.
+ *                   example: "2025-04-04T15:17:47.000Z"
+ *                 updatedAt:
+ *                   type: string
+ *                   format: date-time
+ *                   description: Timestamp of the last update.
+ *                   example: "2025-04-04T15:17:47.000Z"
+ *                 location:
  *                   type: object
+ *                   description: Location details of the hotel.
  *                   properties:
  *                     id:
  *                       type: integer
- *                       description: The user ID.
- *                       example: 52
- *                     name:
+ *                       example: 25
+ *                     address:
  *                       type: string
- *                       description: The user's name.
- *                       example: Leanne Graham
-*/
+ *                       example: Street 25
+ *                     city:
+ *                       type: string
+ *                       example: City_25
+ *                     country:
+ *                       type: string
+ *                       example: Country_25
+ *                     hotelId:
+ *                       type: integer
+ *                       example: 25
+ *                     createdAt:
+ *                       type: string
+ *                       format: date-time
+ *                       example: "2025-04-04T15:17:47.000Z"
+ *                     updatedAt:
+ *                       type: string
+ *                       format: date-time
+ *                       example: "2025-04-04T15:17:47.000Z"
+ *                 rooms:
+ *                   type: array
+ *                   description: List of rooms available in the hotel.
+ *                   items:
+ *                     type: object
+ *                   example: []
+ */
 
 /**
  * @swagger
  * /api/hotel:
  *   get:
  *     tags: [Hotel]
- *     summary: Retrieve a list of JSONPlaceholder users.
- *     description: Retrieve a list of users from JSONPlaceholder. Can be used to populate a list of fake users when prototyping or testing an API.
+ *     summary: Get a list of all hotels
+ *     description: Retrieves a list of all hotels currently available in the system.
  *     responses:
  *       200:
- *         description: A list of users.
+ *         description: List of hotels
  *         content:
  *           application/json:
  *             schema:
@@ -101,15 +146,17 @@
  *               properties:
  *                 data:
  *                   type: array
+ *                   description: Array of hotel objects.
  *                   items:
  *                     type: object
  *                     properties:
  *                       id:
  *                         type: integer
- *                         description: The user ID.
- *                         example: 0
+ *                         example: 12
  *                       name:
  *                         type: string
- *                         description: The user's name.
- *                         example: Leanne Graham
+ *                         example: Ocean View Resort
+ *                       hotelChainId:
+ *                         type: string
+ *                         example: "3"
  */
