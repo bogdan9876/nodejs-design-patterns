@@ -19,8 +19,8 @@ class BaseController<T> {
     async handleRequest(req: Request, res: Response, action: Function): Promise<void> {
         try {
             if (await this.isDatabaseEmpty()) {
-                res.status(400).json({
-                    message: "Database is empty, please, redirect to /data enpoint"
+                res.status(404).render('404', {
+                    message: "Database is empty, please, redirect to /data endpoint"
                 });
                 return;
             }

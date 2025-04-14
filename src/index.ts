@@ -1,7 +1,8 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
-import swaggerOptions from './config/swagger'
+import useragent from 'useragent';
+import swaggerOptions from './config/swagger';
 import sequelize from './config/sequelize';
 import router from './config/router';
 import methodOverride from 'method-override';
@@ -24,7 +25,18 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use('/api', router);
-app.use('/data', DataRouter);
+
+const blockBrowserMiddleware: any = (req: Request, res: Response, next: NextFunction) => {
+  const agent = useragent.parse(req.headers['user-agent'] || '');
+
+  if (agent.family !== 'Other') {
+    return res.status(403).send('Access denied from browser');
+  }
+
+  next();
+};
+
+app.use('/data', blockBrowserMiddleware, DataRouter);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 const startApp = async () => {
