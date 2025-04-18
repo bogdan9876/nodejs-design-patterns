@@ -1,34 +1,16 @@
 {
-  "name": "patterns-nodejs",
+  "name": "nodejs-design-patterns",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "nodemon ./src/index.ts",
-    "build": "tsc -p .",
-    "extra": "node ./build/index.js",
-    "generate": "npx ts-node src/generateData",
-    "import": "npx ts-node src/importData"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "csv-parser": "^3.2.0",
-    "express": "^4.21.2",
-    "inversify": "^7.2.0",
-    "mysql2": "^3.14.0",
-    "nodemon": "^3.1.9",
-    "reflect-metadata": "^0.2.2",
-    "sequelize": "^6.37.6",
-    "sequelize-typescript": "^2.1.6",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.1",
-    "@types/inversify": "^2.0.33",
-    "@types/node": "^22.13.12",
-    "@types/validator": "^13.12.2"
+    "redis": "^4.7.0"
   }
 }
