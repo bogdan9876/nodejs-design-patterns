@@ -1,10 +1,11 @@
-import { createClient } from 'redis';
+import csv from 'csv-parser';
+import { createReadStream } from 'fs';
 
-const client = await createClient()
-  .on('error', err => console.log('Redis Client Error', err))
-  .connect();
-
-await client.set('key', 'value');
-const value = await client.get('key');
-console.log(value)
-await client.disconnect();
+createReadStream('data.csv')
+  .pipe(csv())
+  .on('data', (data) => {
+    console.log(JSON.stringify(data));
+})
+  .on('end', () => {
+    console.log('End of iteration');
+  });
