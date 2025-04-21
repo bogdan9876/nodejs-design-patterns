@@ -2,35 +2,35 @@ import { createReadStream } from 'fs';
 import csv from 'csv-parser';
 import strategyType from './config';
 import Strategy from './outputs/interface';
-import ConsoleInstance from './outputs/console';
-import RedisInstance from './outputs/redis';
-import KafkaInstance from './outputs/kafka';
+import ConsoleStrategy from './outputs/console';
+import RedisStrategy from './outputs/redis';
+import KafkaStrategy from './outputs/kafka';
 
 let strategy: Strategy;
 
 switch (strategyType) {
     case 'console':
-        strategy = new ConsoleInstance();
+        strategy = new ConsoleStrategy();
         break;
     case 'redis':
-        strategy = new RedisInstance();
+        strategy = new RedisStrategy();
         break;
     case 'kafka':
-        strategy = new KafkaInstance();
+        strategy = new KafkaStrategy();
         break;
     default:
         throw new Error(`Unknown strategy - ${strategyType}`)
 }
 
 (async () => {
-    if (strategy.init) await strategy.init();
+    if (strategy.connect) await strategy.connect();
     createReadStream('data.csv')
         .pipe(csv())
         .on('data', async (row) => {
             await strategy.write(row);
         })
         .on('end', async () => {
-            if (strategy.close) await strategy.close();
+            if (strategy.disconnect) await strategy.disconnect();
             console.log('Success');
         });
 })();

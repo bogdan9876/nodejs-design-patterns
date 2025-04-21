@@ -1,14 +1,14 @@
 import { createClient, RedisClientType } from 'redis';
 import Strategy from './interface';
 
-export default class RedisInstance implements Strategy {
+export default class RedisStrategy implements Strategy {
   private client: RedisClientType;
 
   constructor() {
     this.client = createClient();
   }
 
-  async init(): Promise<void> {
+  async connect(): Promise<void> {
     await this.client.connect();
   }
 
@@ -16,7 +16,7 @@ export default class RedisInstance implements Strategy {
     await this.client.rPush('users', JSON.stringify(row));
   }
 
-  async close(): Promise<void> {
+  async disconnect(): Promise<void> {
     await this.client.quit();
   }
 }

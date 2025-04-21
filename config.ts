@@ -1,3 +1,3 @@
-const strategyType: 'console' | 'redis' | 'kafka' = 'kafka';
+const strategyType: string = 'kafka';
 
 export default strategyType;

@@ -1,7 +1,7 @@
 import { Kafka, Producer } from 'kafkajs';
 import Strategy from './interface';
 
-export default class KafkaInstance implements Strategy {
+export default class KafkaStrategy implements Strategy {
   private producer: Producer;
 
   constructor() {
@@ -9,7 +9,7 @@ export default class KafkaInstance implements Strategy {
     this.producer = kafka.producer();
   }
 
-  async init(): Promise<void> {
+  async connect(): Promise<void> {
     await this.producer.connect();
   }
 
@@ -20,7 +20,7 @@ export default class KafkaInstance implements Strategy {
     });
   }
 
-  async close(): Promise<void> {
+  async disconnect(): Promise<void> {
     await this.producer.disconnect();
   }
 }
