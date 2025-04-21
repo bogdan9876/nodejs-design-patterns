@@ -31,6 +31,6 @@ switch (strategyType) {
         })
         .on('end', async () => {
             if (strategy.close) await strategy.close();
-            console.log('Success ');
+            console.log('Success');
         });
 })();

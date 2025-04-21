@@ -5,7 +5,7 @@ export default class KafkaInstance implements Strategy {
   private producer: Producer;
 
   constructor() {
-    const kafka = new Kafka({ clientId: 'csv-producer', brokers: ['localhost:9092'] });
+    const kafka = new Kafka({ clientId: 'producer', brokers: ['localhost:9092'] });
     this.producer = kafka.producer();
   }
 
@@ -15,8 +15,8 @@ export default class KafkaInstance implements Strategy {
 
   async write(row: any): Promise<void> {
     await this.producer.send({
-      topic: 'csv-topic',
-      messages: [{ value: JSON.stringify(row) }],
+      topic: 'topic1',
+      messages: [{ value: JSON.stringify(row)}],
     });
   }
 
