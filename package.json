@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "npx ts-node index.ts"
+    "start": "npx ts-node index.ts",
+    "consumer": "npx ts-node kafka_consumer/index.ts"
   },
   "keywords": [],
   "author": "",

@@ -3,9 +3,10 @@
         "esModuleInterop": true,
         "strict": true,
         "target": "ESNext",
-        "module": "CommonJS",
+        "module": "es2022",
         "outDir": "./build",
         "rootDir": ".",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
     },
+    "include": ["./*"],
 }
